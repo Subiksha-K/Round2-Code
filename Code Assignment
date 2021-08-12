@@ -1,0 +1,36 @@
+create table employees(
+EmpId int,
+EmpName varchar(255),
+Age int
+PRIMARY KEY (EmpId),
+FOREIGN KEY (DepId) REFERENCES Department (DepId)
+);
+insert values into employees(1,'Elena',20);
+insert values into employees(2,'Caroline',18);
+insert values into employees(3,'Bonnie',30);
+
+create table Department(
+DepId int,
+DepName varchar(255)
+);
+insert values into department(1,'ECE');
+insert values into department(2,'EIE');
+insert values into department(3,'EEE');
+
+select EmpName, DepName, employees.EmpId
+from employees, Department
+where employees.EmpId=Department.DepId;
+
+update employees
+set DepName = 'IT'
+where EmpId=2;
+
+delete from employees 
+where EmpName='Elena';
+commit;
+
+select * from employees, Department
+order by EmpName asc;
+
+select * from employee, department
+where EmpName like 'C%';
